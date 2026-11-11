@@ -1,0 +1,28 @@
+using System.Runtime.CompilerServices;
+using UnityEditor;
+using UnityEngine;
+
+public class Healthpack : MonoBehaviour
+{
+public PlayerHealth playerHealth;
+    void Start()
+        {
+      
+        }
+    void Update()
+        {
+        
+        }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (playerHealth.health < 100 && other.CompareTag("Player"))
+        {
+            playerHealth.health = playerHealth.health + 10;
+            Destroy(gameObject);
+        }
+        else if (playerHealth.health == 100)
+        {
+            playerHealth.healthText.text = "Health: 100";
+        }
+    }
+}

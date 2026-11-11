@@ -1,0 +1,37 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+public class mana : MonoBehaviour
+{
+    public int Mana = 100;
+    public TMP_Text manatext;
+    public Animator animator;
+    void Start()
+    {
+        manatext.text = "Mana: " + Mana;
+    }
+    void Update()
+    {
+        manatext.text = "Mana: " + Mana;
+        Fireball();
+    }
+    void Fireball()
+    {
+        if (Keyboard.current.eKey.isPressed)
+        {
+            animator.SetBool("fireball", true);
+        }
+        else
+        {
+            animator.SetBool("fireball", false);
+        }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            animator.SetBool("fireball", true);
+            Mana -= 10;
+        }
+
+
+    }
+
+}
